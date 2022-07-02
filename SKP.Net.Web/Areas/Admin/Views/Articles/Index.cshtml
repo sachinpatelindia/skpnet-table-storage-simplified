@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Articles.ArticleModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Articles</h4>
+<p>
+    <a asp-action="Create">Create New Article</a>
+</p>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreateOnUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShortDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rank)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr onclick="location.href = '/admin/articles/edit?articleRowKey=+@item.RowKey'">
+                <td>
+                    @item.CreateOnUtc.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rank)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    </div>

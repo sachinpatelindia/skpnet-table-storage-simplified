@@ -1,0 +1,30 @@
+﻿@inject SKP.Net.Services.Customers.ICustomerService customerSrvice
+@inject SKP.Net.Services.Customers.ICustomerSettingService customerSetitings
+@inject SKP.Net.Services.Authentication.IAuthenticationService iauthenticationService
+@using SKP.Net.Web.Extensions
+@{
+    Layout = "_layout.Container";
+    var customer = iauthenticationService.GetAuthenticatedCustomer();
+    var settings = customer.GetSettings(customerSetitings);
+}
+
+<nav id="sidebar">
+    <div class="p-4 mt-1">
+        <h5 class="text-secondary">@customer.Email</h5>
+
+        <ul class="list-unstyled components mb-5">
+            @foreach (var setting in settings)
+            {
+                <li>
+                    <a href="@setting.Url" class="dropdown-toggle">@setting.Name</a>
+                    <ul class="list-unstyled collapse" id="pageSubmenu1" style="">
+                        <li><a asp-controller="EmailAccount" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> System Email</a></li>
+                        <li><a asp-controller="EmailTemplate" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Email Template</a></li>
+                        <li><a asp-controller="logo" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Company Logo</a></li>
+                    </ul>
+                </li>
+            }
+            </ul>
+    </div>
+</nav>
+@RenderBody()

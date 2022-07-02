@@ -1,0 +1,36 @@
+﻿@model SKP.Net.Web.Models.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container-fluid">
+    <div class="row vh-50">
+        <div class="col-md-6 text-center py-5 d-flex flex-column justify-content-center auth-bg-section text-white" style="background-image: url(assets/images/login-bg.jpg)">
+            <h1 class="text-info">Welcome to <br> unplug New UI Kit</h1>
+            <p class="font-weight-bold text-info">Enter your personal details and join the unplug ui kit.</p>
+        </div>
+        <div class="col-10 mx-auto col-lg-5">
+            <form class="p-5 border rounded-3 bg-light">
+                <div class="form-floating mb-3">
+                    @*<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>*@
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+                <div class="form-floating mb-3">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                </div>
+                <div class="checkbox mb-3">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-info" type="submit">Sign up</button>
+                <hr class="my-4">
+                <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+            </form>
+        </div>
+    </div>
+</div>
+

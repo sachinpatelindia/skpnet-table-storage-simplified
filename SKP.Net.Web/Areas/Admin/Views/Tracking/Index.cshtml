@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Tracking.TrackingModel>
+
+@{
+    ViewData["Title"] = "Index";
+    var users = Model.Where(u => u.VisitedDate.Date == DateTime.Today).Distinct();
+}
+
+<h5>YTD Visitors : @Model.Count() , Today : @users.Count()</h5>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IPAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VisitedDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsBlocked)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in users)
+            {
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IPAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VisitedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PageUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsBlocked)
+                    </td>
+                    @*<td>
+                        @Html.ActionLink("Block", "Block", new { item.IPAddress }) |
+                        @Html.ActionLink("Delete", "Delete", new { item.IPAddress })
+                    </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

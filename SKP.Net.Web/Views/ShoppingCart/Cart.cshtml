@@ -1,0 +1,66 @@
+﻿@model IEnumerable<SKP.Net.Web.Models.Orders.ShoppingCartItemModel>
+
+@{
+    ViewData["Title"] = "CartDetails";
+}
+
+<h1>Shopping Cart items</h1>
+<table class="table table-sm table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ double price = 0;}
+        @foreach (var item in Model)
+        {
+            price += item.SubTotal;
+        <tr>
+            <td>
+               <img  style="max-width:30px;max-height:30px;" src="@item.ImageUrl" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+        <tr class="border-top table-active">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>Total</b></td>
+            <td><b>@price</b></td>
+            <td><input type="button" class="btn btn-sm btn-info" value="Buy" /></td>
+        </tr>
+    </tbody>
+</table>

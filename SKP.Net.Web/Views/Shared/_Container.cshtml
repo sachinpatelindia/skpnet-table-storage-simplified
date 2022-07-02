@@ -1,0 +1,9 @@
+﻿@{
+    Layout = "_Layout.Container";
+}
+@RenderBody()
+@section Scripts
+{
+
+@await RenderSectionAsync("Scripts", required: false)
+}

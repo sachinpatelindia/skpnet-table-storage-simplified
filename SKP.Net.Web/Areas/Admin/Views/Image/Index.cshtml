@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Media.ImageModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2>Blob Images</h2>
+
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageType)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr onclick="show('@item.ImageUrl')">
+                    <td><input type="checkbox"></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size) KB
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @item.CreatedOn.Value.ToString("dd/MM/yyyyy")
+                    </td>
+                    <td>
+                        @item.UpdatedOn.Value.ToString("dd/MM/yyyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageType)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { rowkey = item.RowKey }, new { @class = "btn-group btn-group-sm", role = "group" }) |
+                            @Html.ActionLink("Delete", "Delete", new { rowkey = item.RowKey })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<input type="image" src="" id="previewImage" width="250" height="250" style="visibility:hidden">
+@section Scripts
+{
+    <script>
+
+        function show(data) {
+            var img = document.getElementById("previewImage");
+            img.style = "visibility:visible";
+            img.src = data;
+            return false;
+        }
+    </script>
+}
+

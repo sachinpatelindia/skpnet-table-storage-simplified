@@ -1,0 +1,46 @@
+﻿@inject SKP.Net.Services.Categories.ICategoryService categoryService
+@inject SKP.Net.Services.SEO.IUrlRecordService urlRecordService
+@inject SKP.Net.Services.Articles.IArticleService articleService
+@using SKP.Net.Core.Domain.Categories
+@using System.Linq
+@{
+    Layout = "_layout.Container";
+    var categories = categoryService.GetCategories()
+        .Where(c => c.Active && !c.Deleted && c.Published && c.CategoryType == CategoryType.Article).Select(cat => new
+    {
+        SeName = urlRecordService.GetSeName(cat),
+        Name = cat.Name,
+        RowKey = cat.RowKey
+    }).ToList();
+}
+
+<div class="container mt-2 d-md-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="p-4 mt-0">
+            <h4 class="text-secondary">Contents</h4>
+            <ul class="list-unstyled components mb-5">
+                @foreach (var category in categories)
+                {
+                    var articles = articleService.GetArticleByCategoryRowKey(category.RowKey);
+                    <li>
+                        <a href="#@category.SeName" onclick="acivate('hi');" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle active">@category.Name : (@articles.Count())</a>
+                        <ul class="collapse list-unstyled" id="@category.SeName">
+                            @foreach (var article in articles)
+                            {
+                                <li><a href="@Url.RouteUrl("article",new {SeName=urlRecordService.GetSeName(article)})"><span class="fa fa-chevron-right mr-2"></span> @article.ShortDescription </a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div id="content" class="p-4 p-md-2 pt-4">
+        @RenderBody()
+    </div>
+</div>
+<script>
+    function activate(type) {
+        alert(type);
+    }
+</script>

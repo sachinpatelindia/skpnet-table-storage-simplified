@@ -1,0 +1,11 @@
+﻿@model SKP.Net.Web.Models.Articles.ArticleModel
+@{
+    Layout = "_ColumnsTwo";
+}
+
+<div class="page-header text-info">
+    <h4 class="mt-3 mr-2">@Html.Raw(Model.ShortDescription) <p class="ml-1 mt-1 text-info " style="font-size:14px; background-color:#f1e6e6; font-weight:600; line-height:20px; display:block; width:100%">Created By : NA | Created On : @Model.CreatedOn.ToString("dd-MM-yyyy") | Total view : @Model.Rank</p></h4>
+</div>
+<div class="pl-1 mt-1 text-secondary">
+    @Html.Raw(Model.FullDescription)
+</div>

@@ -1,0 +1,40 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Messages.EmailTemplateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Template" class="control-label"></label>
+                <input asp-for="Template" class="form-control" />
+                <span asp-validation-for="Template" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            @foreach (var value in Model.TemplateType.GetType().GetEnumValues())
+            {
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="radio" asp-for="TemplateType" value="@value" class="form-check-input" />@value
+                    </label>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

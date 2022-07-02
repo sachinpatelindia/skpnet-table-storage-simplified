@@ -1,0 +1,97 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Categories.ProductModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h4 class=" p-0 mt-4 mb-2 text-secondary border-bottom border-secondary">Create Product</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ShortDescription" class="control-label"></label>
+                    <input asp-for="ShortDescription" class="form-control" />
+                    <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="File" class="control-label"></label>
+                    <input asp-for="File" name="File" class="form-control" />
+                    <span asp-validation-for="File" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" name="Description" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="form-row  border-info border-bottom">
+                <div class="form-group form-check col-md-4">
+                    <legend class="col-form-label col col-sm-12 pl-0 pt-0">Make Product Active</legend>
+                    <label class="form-check-label form-check-inline">
+                        <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                    </label>
+
+                </div>
+                <div class="form-group form-check col-md-8">
+                    <legend class="col-form-label col-sm-2 pl-0 pt-0">Product/Services</legend>
+                    @foreach (var value in Model.ProductType.GetType().GetEnumValues())
+                    {
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input type="radio" asp-for="ProductType" onclick="loadMeasure('@value');" value="@value" class="form-check-input" />@value
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="form-row  border-info border-bottom">
+                <div class="form-group form-check col-md-12" id="measure" style="display:none;">
+                    <legend class="col-form-label col-sm-2 pl-0 pt-0">Unit/Measure</legend>
+                    @foreach (var value in Model.Measure.GetType().GetEnumValues())
+                    {
+                        <div class="form-check form-check-inline pl-5">
+                            <label class="form-check-label">
+                                <input type="radio" asp-for="Measure" value="@value" class="form-check-input" />@value
+                            </label>
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <br />
+            <div class="form-group float-right">
+                <input type="button" value="Cancel" onclick="location.href = '/admin/product';" class="btn btn-danger btn-sm" />
+                <input type="submit" value="Create" class="btn btn-info btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        function loadMeasure(data) {
+            var storageRadio = document.getElementById('measure');
+            if (data == 'Storage') {
+                storageRadio.style = "display:block";
+            } else {
+                storageRadio.style = "display:none";
+            }
+        }
+    </script>
+}

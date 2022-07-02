@@ -1,0 +1,414 @@
+﻿@model SKP.Net.Web.Models.Home.HomeViewModel
+@inject SKP.Net.Core.IWorkContext workcontext
+@{
+    ViewData["Title"] = "Home Page";
+    int cartItemsCount = Model.ShoppingCartItems.Count;
+}
+
+@if (Model.ShoppingCartItems.Any())
+{
+<a href="/cart" class="btn-link">Goto Shopping Cart : <b>@Model.ShoppingCartItems.Count</b> items found</a>
+}
+@if (Model.News.Active)
+{
+    <div class="alert alert-info px-1 py-1 pt-1 mt-2" role="alert">
+        @Model.News.Title <a href="@Model.News.Url" class="alert-link">@Model.News.Description</a>
+    </div>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="MiCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @foreach (var item in Model.Carousels)
+                            {
+
+                        <li data-target="#MiCarousel" data-slide-to="@item.DisplayOrder" class="carousel-pagination @item.Active"></li>
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @foreach (var item in Model.Carousels)
+                    {
+                        string active = item.Active ? "active" : "";
+                        <div class='carousel-item @active'>
+                            <div class="row">
+                                <div class="col-md-6 div-l">
+                                    <div class="carousel-img" style="background-image: url('@item.Url');">
+                                        <h1 class="carousel-title">@item.Title</h1>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 div-r">
+                                    <h3>@item.Title</h3>
+                                    <hr>
+                                    <p>@item.Description</p>
+                                    <button class="btn btn-info">Know more</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next carousel-controls" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-block-grey">
+        <div class="container">
+            <div class="section-heading center-holder">
+                <h3>Free service offerings... </h3>
+                <div class="section-heading-line"></div>
+                <p>
+                    We offer lots of free service including software architecture  to free learning contentss.
+                    <br>
+                </p>
+            </div>
+            <div class="row mt-60">
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4>Planning</h4>
+                            <h5>Business Planning</h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2 serv-section-2-act">
+                        <div class="serv-section-2-icon serv-section-2-icon-act"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4>Management</h4>
+                            <h5>Retirement Planning</h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4>Accumulation</h4>
+                            <h5>Support and Sell</h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-60">
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4>Security </h4>
+                            <h5>Secure Business</h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2 serv-section-2-act">
+                        <div class="serv-section-2-icon serv-section-2-icon-act"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4>24/7 Available </h4>
+                            <h5>All time available </h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-12">
+                    <div class="serv-section-2">
+                        <div class="serv-section-2-icon"> <i class="fa fa-users"></i> </div>
+                        <div class="serv-section-desc">
+                            <h4> Customer Support </h4>
+                            <h5>Support and Sell</h5>
+                        </div>
+                        <div class="section-heading-line-left"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="card-deck mb-3 text-center">
+    @foreach (var item in Model.FeaturedProducts.TakeLast(3))
+    {
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">@item.Name</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">@item.Price <small class="text-muted">/@item.Measure</small></h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>@item.Description</li>
+                </ul>
+                <a class="btn btn-sm btn-block btn-info" href="@Url.Action("AddToCart","ShoppingCart",new {productid=item.RowKey ,customerrowkey=workcontext.CurrentCustomer.RowKey})">Add to cart</a>
+            </div>
+        </div>
+    }
+</div>
+<br />
+
+<div class="col-xl-12 col-xxl-8 px-4 py-5">
+    <div class="row g-5">
+        @foreach (var content in Model.PageSections.OrderBy(arg => arg.DisplayOrder).Skip(2).Take(2))
+        {
+            <div class="col-md-6">
+                <h2>@content.Title</h2>
+                <p>@content.Description</p>
+                @if (content.Urls.Any())
+                {
+                    <ul class="icon-list">
+                        @foreach (var url in content.Urls)
+                        {
+                            <li class="text-muted">@url.Item1</li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .icon-list li::before {
+        display: block;
+        flex-shrink: 0;
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: .5rem;
+        content: "";
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23212529' viewBox='0 0 16 16'%3E%3Cpath d='M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z'/%3E%3C/svg%3E") no-repeat center center / 100% auto
+    }
+
+    .icon-list li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: .25rem;
+    }
+
+    .moving-btn {
+        background-color: #ff006e;
+    }
+
+
+    .card-counter {
+        box-shadow: 2px 2px 10px #DADADA;
+        margin: 5px;
+        padding: 20px 10px;
+        background-color: #fff;
+        height: 100px;
+        border-radius: 5px;
+        transition: .3s linear all;
+    }
+
+        .card-counter:hover {
+            box-shadow: 4px 4px 20px #DADADA;
+            transition: .3s linear all;
+        }
+
+        .card-counter.primary {
+            background-color: #007bff;
+            color: #FFF;
+        }
+
+        .card-counter.danger {
+            background-color: #ef5350;
+            color: #FFF;
+        }
+
+        .card-counter.success {
+            background-color: #66bb6a;
+            color: #FFF;
+        }
+
+        .card-counter.info {
+            background-color: #26c6da;
+            color: #FFF;
+        }
+
+        .card-counter i {
+            font-size: 5em;
+            opacity: 0.2;
+        }
+
+        .card-counter .count-numbers {
+            position: absolute;
+            right: 35px;
+            top: 20px;
+            font-size: 32px;
+            display: block;
+        }
+
+        .card-counter .count-name {
+            position: absolute;
+            right: 35px;
+            top: 65px;
+            font-style: italic;
+            text-transform: capitalize;
+            opacity: 0.5;
+            display: block;
+            font-size: 18px;
+        }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    #MiCarousel {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        -webkit-box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 38px -13px rgba(0,0,0,0.75);
+    }
+
+    .carousel-img {
+        background-color: #000;
+        color: #fff;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        -webkit-clip-path: polygon(0 0, 96% 0, 100% 100%, 0% 100%);
+        clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+        opacity: 0.8;
+    }
+
+    .div-r {
+        padding: 40px;
+    }
+
+    .carousel-title {
+        font-size: 80px;
+        font-weight: bold;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .carousel-pagination {
+        background-color: #000 !important;
+        width: 15px !important;
+        height: 15px !important;
+        border-radius: 100%;
+        position: relative;
+        bottom: -50px;
+        opacity: 0.5;
+    }
+
+        .carousel-pagination.active {
+            opacity: 1;
+        }
+
+    .carousel-controls {
+        display: none;
+    }
+
+    .mt-60 {
+        margin-top: 60px;
+    }
+
+    .section-block-grey {
+        padding: 90px 0px 90px 0px;
+        background-color: #f9f9f9;
+    }
+
+    .serv-section-2 {
+        position: relative;
+        border: 1px solid #eee;
+        background: #fff;
+        box-shadow: 0px 10px 30px 0px rgba(50, 50, 50, 0.16);
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 30px;
+    }
+
+        .serv-section-2:before {
+            position: absolute;
+            top: 0;
+            right: 0px;
+            z-index: 0;
+            content: " ";
+            width: 120px;
+            height: 120px;
+            background: #f5f5f5;
+            border-bottom-left-radius: 136px;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+        }
+
+    .serv-section-2-icon {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        max-width: 100px;
+        z-index: 1;
+        text-align: center;
+    }
+
+        .serv-section-2-icon i {
+            color: #5f27cd;
+            font-size: 48px;
+            line-height: 65px;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+        }
+
+    .serv-section-desc {
+        position: relative;
+    }
+
+    .serv-section-2 h4 {
+        color: #333;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    .serv-section-2 h5 {
+        color: #333;
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1;
+        margin-top: 5px;
+    }
+
+    .section-heading-line-left {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: #5f27cd;
+        border-radius: 25%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+    .serv-section-2 p {
+        margin-top: 25px;
+        padding-right: 50px;
+    }
+
+    .serv-section-2:hover .serv-section-2-icon i {
+        color: #fff;
+    }
+
+    .serv-section-2:hover:before {
+        background: #5f27cd;
+    }
+</style>

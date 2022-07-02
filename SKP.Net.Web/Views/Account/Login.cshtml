@@ -1,0 +1,41 @@
+﻿@model SKP.Net.Web.Models.Account.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = this.Context.Request.Query["returnUrl"];// Url.RouteUrl("login", new { returnUrl = this.Context.Request.Query["returnUrl"] });
+}
+<div class="col-xl-12 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Want to access free and premium content?</h1>
+            <p class="col-lg-10 fs-4">Register or Login to access all the learning and educational content. Some paid content will be not available . But you can pay penny to access.</p>
+        </div>
+        <div class="col-10 mx-auto col-lg-5">
+            <form href="@Url.RouteUrl("SignIn",new {returnUrl=returnUrl })" method="post" class="p-5 border rounded-3 bg-light">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="input-group mb-3">
+                    <input  asp-for="Email" autocomplete="off" class="form-control" placeholder="Email Id" aria-label="Email Id">
+                </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Password" autocomplete="off" placeholder="Password" class="form-control" />
+                </div>
+
+                <button class="w-100 btn btn-sm btn-info" type="submit">Sign in</button>
+                <hr class="my-4">
+                <small class="text-muted">By clicking <a href="/register" class="btn-sm btn-info text-light"> Sign up</a> , you agree to the terms of use.</small>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $("#img-captcha").click(function () {
+            resetCaptchaImage();
+        });
+
+        function resetCaptchaImage() {
+            d = new Date();
+            $("#img-captcha").attr("src", "/get-captcha-image?" + d.getTime());
+        }
+    </script>
+}

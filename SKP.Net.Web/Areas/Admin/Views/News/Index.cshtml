@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.News.NewsModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2>All News</h2>
+
+<p>
+    <a asp-action="Create">Create New News</a>
+</p>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOnUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpireOnUtc)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td class="truncated">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td class="truncated">
+                        @Html.DisplayFor(modelItem => item.Url)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @item.CreatedOnUtc.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.ExpireOnUtc.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { rowKey = item.RowKey })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+
+    td.truncated {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        white-space: nowrap;
+        max-width: 150px;
+    }
+</style>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Logo.LogoModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2>Logos</h2>
+
+<p>
+    <a asp-action="Create">Upload New Logo</a>
+</p>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageType)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageType)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

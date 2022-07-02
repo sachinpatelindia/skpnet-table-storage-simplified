@@ -1,0 +1,32 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Articles.ArticleModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Edit Article</h4>
+<form asp-action="Edit">
+    @Html.HiddenFor(m => m.RowKey)
+    @await Html.PartialAsync("_CreateOrUpdateArticle")
+</form>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $('#FullDescription').summernote({
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+
+</script>
+
+

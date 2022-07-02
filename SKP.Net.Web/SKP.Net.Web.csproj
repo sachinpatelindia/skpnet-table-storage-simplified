@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Customers\**" />
+    <Content Remove="Models\Customers\**" />
+    <EmbeddedResource Remove="Models\Customers\**" />
+    <None Remove="Models\Customers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Account\SignIn.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <_WebToolingArtifacts Remove="Properties\PublishProfiles\skpatel.net.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
+    <PackageReference Include="summernote.editor" Version="0.8.10" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SKP.Net.Framework\SKP.Net.Web.Framework.csproj" />
+    <ProjectReference Include="..\SKP.Net.Services\SKP.Net.Services.csproj" />
+    <ProjectReference Include="..\SKP.Net.Storage\SKP.Net.Storage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
+    <None Include="Properties\PublishProfiles\skpatel.net.pubxml.user" />
+  </ItemGroup>
+
+</Project>

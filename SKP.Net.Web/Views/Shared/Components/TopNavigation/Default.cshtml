@@ -1,0 +1,70 @@
+﻿@inject SKP.Net.Services.Images.IImageService imageService
+@inject SKP.Net.Services.Customers.ICustomerService customerService
+@inject SKP.Net.Services.Authentication.IAuthenticationService authenticatonService
+@{
+    var defaultLoagUrl = imageService.GetImages<SKP.Net.Core.Domain.Media.Image>().FirstOrDefault(m => m.ImageType == SKP.Net.Core.Domain.Media.ImageType.Logo && m.Active)?.ImageUrl;
+    var customer = authenticatonService.GetAuthenticatedCustomer();
+}
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        @if (!string.IsNullOrEmpty(defaultLoagUrl))
+        {
+            <a href="/" class="navbar-brand">
+                <img alt="logo" style="height:40px;width:134px;" class="navbar-brand" src="@defaultLoagUrl" />
+            </a>
+        }
+        else
+        {
+            <a href="#" class="navbar-brand">SKPATEL.NET</a>
+        }
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Articles" asp-action="Index">Articles</a>
+                   <a class="nav-link text-dark" asp-area="" asp-controller="Learn" asp-action="Index">Learn</a>
+                @*<a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="nav-item nav-link">Admin</a>
+                    <a asp-controller="Hire" asp-action="Index" class="nav-item nav-link">Hire me</a>*@
+            </div>
+
+            <div class="navbar-nav">
+
+                @if (customer != null)
+                {
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            @customer.Email
+                        </a>
+                        <div class="dropdown-menu">
+                            @if (customerService.IsGuestRole(customer))
+                            {
+                                <a href="/signin" class="dropdown-item">Sign In</a>
+                                <a href="/register" class="dropdown-item">Register</a>
+                                <a href="/my-account" class="dropdown-item">Guest Account</a>
+                            }
+                            @if (customerService.IsRegisteredRole(customer))
+                            {
+                                <a href="/signout" class="dropdown-item">Sign Out</a>
+                                <a href="/my-account" class="dropdown-item">My Account</a>
+                            }
+
+                            @if (customerService.IsAdmin(customer))
+                            {
+                                <a asp-area="Admin" asp-controller="Customers" asp-action="Index" class="dropdown-item">Admin</a>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a href="/signin" class="nav-item badge p-2 badge-info">Sign In</a>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</nav>

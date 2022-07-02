@@ -1,0 +1,59 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Messages.EmailAccountModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<h2>System Email Account</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.From)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.From)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DisplayName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SmtpUserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SmtpUserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Host)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Host)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Port)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Port)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EnableSsl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EnableSsl)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { rowKey=Model.RowKey }) |
+    <a asp-action="Index">Back to List</a>
+</div>

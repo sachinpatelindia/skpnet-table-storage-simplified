@@ -1,0 +1,62 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Categories.CategoryModel
+
+@{
+    ViewData["Title"] = "Create";
+    var returnUrl = this.Context.Request.Query["returnUrl"];
+}
+
+<h4 class=" p-0 mt-4 mb-2 text-secondary border-bottom border-secondary">Create Category</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" href="@Url.RouteUrl("admin",new {returnUrl=returnUrl })" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row mt-2 p-2 mb-2">
+                @foreach (var value in Model.CategoryType.GetType().GetEnumValues())
+                {
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" asp-for="CategoryType" onclick="loadMeasure('@value');" value="@value" class="form-check-input" />@value
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="MetaTitle" class="control-label"></label>
+                    <input asp-for="MetaTitle" class="form-control" />
+                    <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="MetaKeywords" class="control-label"></label>
+                    <input asp-for="MetaKeywords" class="form-control" />
+                    <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="MetaDescription" class="control-label"></label>
+                    <input asp-for="MetaDescription" class="form-control" />
+                    <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" name="Description" class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+            <br />
+            <div class="form-group float-right">
+                <input type="button" value="Cancel" onclick="location.href = '/admin/category';" class="btn btn-danger btn-sm" />
+                <input type="submit" value="Create" class="btn btn-info btn-sm" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

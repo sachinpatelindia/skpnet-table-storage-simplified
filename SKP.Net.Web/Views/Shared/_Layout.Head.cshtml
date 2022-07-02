@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SKP.Net</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/skpnet.css" />
+    <style>
+        #sidebar ul li a {
+            padding: 10px 0;
+            display: block;
+            color: black;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        #sidebar a[data-toggle="collapse"] {
+            position: relative;
+        }
+
+        #sidebar .dropdown-toggle {
+            white-space: nowrap;
+        }
+
+        #sidebar a {
+            -webkit-transition: .3s all ease;
+            -o-transition: .3s all ease;
+            transition: .3s all ease;
+            color: #fc7fb2;
+        }
+
+        #sidebar a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        /*      a:-webkit-any-link {
+                color: -webkit-link;
+                cursor: pointer;
+                text-decoration: underline;
+            }*/
+
+        #sidebar ul li {
+            font-size: 14px;
+        }
+
+        #sidebar {
+            min-width: 270px;
+            max-width: 270px;
+            color: #fff;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 0;
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+            #sidebar *, *::before, *::after {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            #sidebar .dropdown-toggle::after {
+                display: block;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+
+            #sidebar .dropdown-toggle::after {
+                display: inline-block;
+                margin-left: 0.255em;
+                vertical-align: 0.255em;
+                content: "";
+                border-top: 0.3em solid;
+                border-right: 0.3em solid transparent;
+                border-bottom: 0;
+                border-left: 0.3em solid transparent;
+            }
+
+        #table-content {
+            background: #fff;
+            width: 97.5%;
+            height: auto;
+            margin-top: 20px;
+            box-shadow: #dcdee3 0px 0px 2px;
+            margin-left: 5px;
+        }
+
+            #table-content table {
+                width: 100%;
+            }
+
+            #table-content thead {
+                background: #f2f3f5;
+            }
+
+                #table-content thead tr th {
+                    color: #757e92;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    padding: 6px 10px;
+                }
+
+            #table-content tbody tr td {
+                padding: 6px 10px;
+                font-size: 13px;
+                border-bottom: #eaecee solid 1px;
+            }
+
+            #table-content tbody tr:hover {
+                background: #22536e;
+                color: #fff;
+                cursor: pointer !important;
+            }
+
+            #table-content .checked {
+                background: #fefaf2;
+            }
+    </style>
+</head>
+<body>
+    @RenderBody()
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/skpnet.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

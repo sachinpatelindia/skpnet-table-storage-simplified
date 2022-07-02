@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Categories.ProductModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Products</h2>
+
+<p>
+    <a asp-action="Create">Create New Product</a>
+</p>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Measure)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr onclick="show('@item.ImageUrl')">
+                    <td><input type="checkbox"></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Measure)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { productRowKey = item.RowKey })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<input type="image" src="" id="previewImage" width="250" height="250" style="visibility:hidden">
+@section Scripts
+{
+    <script>
+
+        function show(data) {
+            var img = document.getElementById("previewImage");
+            img.style = "visibility:visible";
+            img.src = data;
+            return false;
+        }
+    </script>
+}

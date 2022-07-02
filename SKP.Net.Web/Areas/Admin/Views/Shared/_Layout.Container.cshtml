@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "_Layout.Head";
+}
+
+@inject SKP.Net.Services.Images.IImageService imageService
+@{
+    var defaultLogoUrl = imageService.GetImages<SKP.Net.Core.Domain.Media.Image>().FirstOrDefault(m => m.ImageType == SKP.Net.Core.Domain.Media.ImageType.Logo && m.Active)?.ImageUrl;
+}
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container">
+        @if (!string.IsNullOrEmpty(defaultLogoUrl))
+        {
+            <a href="/" class="navbar-brand">
+                <img alt="logo" style="height:40px;width:134px;" class="navbar-brand" src="@defaultLogoUrl" />
+            </a>
+
+        }
+        else
+        {
+            <a href="#" class="navbar-brand">SKPATEL.NET</a>
+        }
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </div>
+
+            <div class="navbar-nav">
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            @User.Identity.Name
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="/signout" class="dropdown-item">Sign Out</a>
+                            <a href="/my-account" class="dropdown-item">My Account</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <a href="/signin" class="nav-item badge p-2 badge-info">Sign In</a>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+<main role="main" class="pb-3 container d-md-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="p-4 mt-1">
+            <h4 class="text-secondary">Admin Panel</h4>
+            <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">System</a>
+                    <ul class="list-unstyled collapse" id="pageSubmenu1" style="">
+                        <li><a asp-controller="EmailAccount" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> System Email</a></li>
+                        <li><a asp-controller="EmailTemplate" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Email Template</a></li>
+                        <li><a asp-controller="logo" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Company Logo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">Users And Roles</a>
+                    <ul class="list-unstyled collapse" id="pageSubmenu2" style="">
+                        <li><a asp-controller="Customers" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Users</a></li>
+                        <li><a asp-controller="Role" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Roles</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Product and Services</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu3">
+                        <li><a asp-controller="Product" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Products</a></li>
+                        <li><a asp-controller="Orders" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Orders</a></li>
+                        <li><a asp-controller="Category" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Categories</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">CMS</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu4">
+                        <li><a asp-controller="News" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> News</a></li>
+                        <li><a asp-controller="Image" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Images</a></li>
+                        <li><a asp-controller="Pagedata" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Pages</a></li>
+                        <li><a asp-controller="Articles" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> Articles</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Monitoring</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu5">
+                        <li><a asp-controller="Tracking" asp-action="Index"><span class="fa fa-chevron-right mr-2"></span> User Activity</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+</main>
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2017–@DateTime.Now.Year SKPATEL.NET</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a class="text-dark" href="/aboutus">About Us</a></li>
+        <li class="list-inline-item"><a class="text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+        <li class="list-inline-item"><a class="text-dark" asp-area="" asp-controller="Support" asp-action="Query">Support</a></li>
+        <li class="list-inline-item"><a class="text-dark" href="/privacy">Privacy</a></li>
+        <li class="list-inline-item"><a class="text-dark" href="/terms">Terms</a></li>
+    </ul>
+</footer>
+@section Scripts
+{
+
+    @await RenderSectionAsync("Scripts", required: false)
+}

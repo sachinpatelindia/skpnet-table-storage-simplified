@@ -1,0 +1,226 @@
+﻿@model SKP.Net.Web.Models.Hire.HireViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="masthead bg-light">
+    <div class="container">
+        <svg class="bs-docs-booticon mb-3" version="1.0" xmlns="http://www.w3.org/2000/svg"
+             width="100" height="80" viewBox="0 0 512.000000 512.000000"
+             preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+               fill="#fafffb" stroke="none">
+                <path d="M2468 4990 c-162 -28 -333 -126 -436 -252 -63 -75 -692 -1105 -714
+                  -1166 -16 -46 -19 -75 -16 -147 4 -78 10 -103 47 -188 23 -54 46 -109 51 -122
+                  8 -22 -4 -32 -258 -187 -299 -183 -384 -253 -439 -363 -18 -35 -120 -365 -243
+                  -785 -193 -657 -213 -734 -218 -817 -3 -74 0 -105 17 -161 37 -122 130 -236
+                  241 -292 52 -27 360 -140 380 -140 33 0 70 39 70 74 0 48 -28 66 -190 126
+                  -244 90 -288 120 -342 237 -53 112 -52 115 186 928 115 391 220 733 233 762
+                  14 28 44 69 67 91 35 34 530 349 558 355 5 1 42 -73 81 -166 l72 -168 158
+                  -149 c141 -134 161 -150 192 -150 45 0 75 29 75 72 0 28 -19 50 -154 182
+                  l-154 151 -143 340 c-125 298 -142 347 -142 395 0 30 5 66 13 80 7 14 157 261
+                  334 549 350 572 399 638 513 698 99 52 159 67 263 67 141 -1 236 -34 346 -122
+                  52 -41 98 -105 366 -507 168 -253 320 -485 337 -516 51 -93 49 -102 -110 -607
+                  -78 -246 -145 -454 -149 -462 -5 -8 -77 -54 -162 -102 -84 -47 -159 -92 -165
+                  -99 -18 -18 -16 -70 3 -97 30 -43 69 -31 263 79 109 62 183 110 189 123 5 12
+                  35 103 66 201 31 99 58 181 60 182 6 7 469 -283 510 -318 23 -20 54 -60 70
+                  -89 17 -32 111 -334 243 -783 203 -693 214 -736 211 -802 -6 -123 -72 -227
+                  -176 -278 -26 -13 -112 -48 -192 -77 -162 -60 -190 -78 -190 -126 0 -35 37
+                  -74 70 -74 26 0 358 127 408 156 105 62 198 191 222 311 27 126 18 164 -209
+                  938 -121 413 -225 748 -243 785 -56 115 -129 176 -421 355 -168 102 -256 162
+                  -253 170 43 113 129 414 133 466 6 69 -8 151 -35 204 -8 17 -152 239 -320 495
+                  -360 548 -392 585 -565 669 -146 72 -272 94 -409 71z" />
+                <path d="M2483 3940 c-23 -5 -56 -16 -74 -25 -47 -25 -630 -405 -656 -428 -29
+                  -26 -31 -79 -3 -107 41 -41 63 -31 397 187 175 114 335 213 356 220 28 10 49
+                  11 74 4 19 -6 178 -105 353 -220 337 -223 358 -233 400 -191 20 20 26 54 14
+                  85 -9 22 -626 434 -684 456 -59 22 -125 30 -177 19z" />
+                <path d="M1985 3388 c-54 -30 -48 -58 66 -342 116 -289 130 -315 196 -377 78
+                  -73 142 -93 293 -93 162 0 217 19 305 108 60 60 62 64 173 338 62 153 112 291
+                  112 307 0 20 -9 36 -26 50 -33 26 -65 27 -92 4 -12 -10 -69 -138 -131 -292
+                  -60 -150 -120 -284 -133 -298 -38 -41 -95 -64 -172 -70 -122 -9 -217 24 -261
+                  91 -8 13 -65 144 -125 292 -60 148 -117 274 -127 281 -21 16 -51 16 -78 1z" />
+                <path d="M1106 2139 l-26 -20 0 -854 0 -854 26 -20 27 -21 1397 0 1397 0 27
+                  21 26 20 0 854 0 854 -26 20 -27 21 -1397 0 -1397 0 -27 -21z m2724 -874 l0
+                  -745 -1300 0 -1300 0 0 745 0 745 1300 0 1300 0 0 -745z" />
+                <path d="M1133 283 c-50 -10 -69 -81 -34 -124 l19 -24 1379 -3 c758 -1 1393 0
+                  1411 3 67 12 93 76 53 126 l-19 24 -1394 1 c-766 1 -1403 -1 -1415 -3z" />
+            </g>
+        </svg>
+        <h1 class="f2">Start hacking me.......</h1>
+        <p class="col-lg-10 text-light text-md-center fs-4">If, your email or domain does not exist in our database , then i will add your email and domain name in our database . After verifying your email and domain name, i will send an email with my complete profile and answer of commonly asked questions.</p>
+
+    </div>
+</div>
+<div class="col-xl-12 col-xxl-8 px-4 py-5">
+    @if (!Model.Company.Active)
+    {
+        <div class="row align-items-center g-5 py-5">
+            <div class="col-10 mx-auto col-lg-5">
+                <form asp-action="Index" class="p-5 border rounded-3 bg-light">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-floating mb-4">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <button class="w-50 btn btn-lg btn-light" type="submit" style="color:azure; background-image:linear-gradient(#00b7c4, #00b7c4)">Search Bio</button>
+                </form>
+            </div>
+            <div class="col-lg-7 text-center text-lg-start">
+                <h2 class="display-4 mb-3 text-dark">Enter your corporate email id to access my personal and professional details.</h2>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2 class="f2">Welcome, @Model.Company.Name</h2>
+        <h6>Please select check box as per your requirement. Your can not access some critical information during screening process. But you can access all the personal data after successful selection process. </h6>
+        <hr />
+        <form class="row" asp-action="request" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-md-4">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Name" /> @Html.DisplayNameFor(model => model.RequiredInformation.Name)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Phone" /> @Html.DisplayNameFor(model => model.RequiredInformation.Phone)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Email" /> @Html.DisplayNameFor(model => model.RequiredInformation.Email)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Age" /> @Html.DisplayNameFor(model => model.RequiredInformation.Age)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Gender" /> @Html.DisplayNameFor(model => model.RequiredInformation.Gender)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Dob" /> @Html.DisplayNameFor(model => model.RequiredInformation.Dob)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.CurrentLocation" /> @Html.DisplayNameFor(model => model.RequiredInformation.CurrentLocation)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.DesiredLocation" /> @Html.DisplayNameFor(model => model.RequiredInformation.DesiredLocation)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.NoticePeriod" /> @Html.DisplayNameFor(model => model.RequiredInformation.NoticePeriod)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.NegotiationInDays" /> @Html.DisplayNameFor(model => model.RequiredInformation.NegotiationInDays)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.CurrentSalary" /> @Html.DisplayNameFor(model => model.RequiredInformation.CurrentSalary)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.ExpectedSalary" /> @Html.DisplayNameFor(model => model.RequiredInformation.ExpectedSalary)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.UpdatedResume" /> @Html.DisplayNameFor(model => model.RequiredInformation.UpdatedResume)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.LatestPhotograph" /> @Html.DisplayNameFor(model => model.RequiredInformation.LatestPhotograph)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.RelievingLetter" /> @Html.DisplayNameFor(model => model.RequiredInformation.RelievingLetter)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.OfferLetter" /> @Html.DisplayNameFor(model => model.RequiredInformation.OfferLetter)
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.AdharCard" /> @Html.DisplayNameFor(model => model.RequiredInformation.AdharCard)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.PanCard" /> @Html.DisplayNameFor(model => model.RequiredInformation.PanCard)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RequiredInformation.Passport" /> @Html.DisplayNameFor(model => model.RequiredInformation.Passport)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Request Info" class="btn btn-info" />
+            </div>
+        </form>
+        <hr />
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Applications[0].AppliedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Applications[0].PositionName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Applications[0].Location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Applications[0].ContactPerson)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Applications)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AppliedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PositionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactPerson)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>

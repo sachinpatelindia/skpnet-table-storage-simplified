@@ -1,0 +1,51 @@
+﻿@model SKP.Net.Web.Models.Account.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+    var host ="https://"+ Context.Request.Host.Value;
+}
+
+<h2>Register</h2>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Register">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <ul class="text-danger validation-summary-errors" id="otp-message"></ul>
+            <div class="input-group mb-3">
+                <input asp-for="Email" autocomplete="off" class="form-control" placeholder="Email Id" aria-label="Email Id">
+                <div class="input-group-append">
+                    <button class="btn btn-info" id="sendOtp" style="margin-left:5px" type="button">Send OTP</button>
+                    <input asp-for="OTP" placeholder="OTP" autocomplete="off" type="text" style="width:55px;margin-left:5px" maxlength="4">
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input asp-for="Password" autocomplete="off" placeholder="Password" class="form-control" />
+            </div>
+            <div class="input-group  mb-3">
+                <input asp-for="ConfirmPassword" autocomplete="off" placeholder="Confirm Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#sendOtp").click(function () {
+                var email = $("#Email").val();
+                $("#Email").attr("readonly", "readonly");
+                $("#sendOtp").attr("disabled", "disabled")
+                $.ajax({
+                    url: '@host/send-otp?emailId=' + email,
+                    success: function (result) {
+                        $('#otp-message').empty();
+                        $('#otp-message').append('<li>' + result + '</li>');
+                    }
+                });
+            });
+        });
+    </script>
+}

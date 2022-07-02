@@ -1,0 +1,60 @@
+﻿@model SKP.Net.Web.Areas.Admin.Models.Messages.EmailAccountModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>EmailAccountModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="From" class="control-label"></label>
+                <input asp-for="From" class="form-control" />
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplayName" class="control-label"></label>
+                <input asp-for="DisplayName" class="form-control" />
+                <span asp-validation-for="DisplayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SmtpUserName" class="control-label"></label>
+                <input asp-for="SmtpUserName" class="form-control" />
+                <span asp-validation-for="SmtpUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Host" class="control-label"></label>
+                <input asp-for="Host" class="form-control" />
+                <span asp-validation-for="Host" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Port" class="control-label"></label>
+                <input asp-for="Port" class="form-control" />
+                <span asp-validation-for="Port" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EnableSsl" /> @Html.DisplayNameFor(model => model.EnableSsl)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

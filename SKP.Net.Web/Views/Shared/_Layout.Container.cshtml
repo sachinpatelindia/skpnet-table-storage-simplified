@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "_Layout.Head";
+}
+
+<header>
+    @await Html.PartialAsync("_Header")
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2017–@DateTime.Now.Year SKPATEL.NET</p>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a class="text-dark" href="/aboutus">About Us</a></li>
+        <li class="list-inline-item"><a class="text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+        <li class="list-inline-item"><a class="text-dark" asp-area="" asp-controller="Support" asp-action="Query">Support</a></li>
+        <li class="list-inline-item"><a class="text-dark" href="/privacy">Privacy</a></li>
+        <li class="list-inline-item"><a class="text-dark" href="/terms">Terms</a></li>
+    </ul>
+</footer>
+
+@section Scripts
+{
+    @await RenderSectionAsync("Scripts", required: false)
+}

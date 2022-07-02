@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Orders.OrderAdminModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Orders</h2>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOn)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderTotal)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderTotal)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Delete", "Delete", new { orderRowKey = item.OrderRowKey })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKP.Net.Web", "SKP.Net.Web\SKP.Net.Web.csproj", "{156ACBAD-D69C-4559-AC0C-C1446E30D286}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKP.Net.Web.Framework", "SKP.Net.Framework\SKP.Net.Web.Framework.csproj", "{F1756ADE-98E1-4CB3-99E8-411FF27249C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKP.Net.Core", "SKP.Net.Core\SKP.Net.Core.csproj", "{DF9E1D92-751C-44B3-BE32-089F9BEDD7E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKP.Net.Data", "SKP.Net.Data\SKP.Net.Data.csproj", "{BF2220CA-3F52-4100-B256-99D0C8272339}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SKP.Net.Services", "SKP.Net.Services\SKP.Net.Services.csproj", "{08A30A5A-9F0B-4693-88B4-4DA1FC4D65B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKP.Net.Storage", "SKP.Net.Storage\SKP.Net.Storage.csproj", "{A561B494-BDB4-42A9-BD0A-C5AB28CAF906}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{156ACBAD-D69C-4559-AC0C-C1446E30D286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156ACBAD-D69C-4559-AC0C-C1446E30D286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156ACBAD-D69C-4559-AC0C-C1446E30D286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156ACBAD-D69C-4559-AC0C-C1446E30D286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1756ADE-98E1-4CB3-99E8-411FF27249C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1756ADE-98E1-4CB3-99E8-411FF27249C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1756ADE-98E1-4CB3-99E8-411FF27249C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1756ADE-98E1-4CB3-99E8-411FF27249C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9E1D92-751C-44B3-BE32-089F9BEDD7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9E1D92-751C-44B3-BE32-089F9BEDD7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9E1D92-751C-44B3-BE32-089F9BEDD7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9E1D92-751C-44B3-BE32-089F9BEDD7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2220CA-3F52-4100-B256-99D0C8272339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2220CA-3F52-4100-B256-99D0C8272339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2220CA-3F52-4100-B256-99D0C8272339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2220CA-3F52-4100-B256-99D0C8272339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A30A5A-9F0B-4693-88B4-4DA1FC4D65B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A30A5A-9F0B-4693-88B4-4DA1FC4D65B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A30A5A-9F0B-4693-88B4-4DA1FC4D65B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A30A5A-9F0B-4693-88B4-4DA1FC4D65B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A561B494-BDB4-42A9-BD0A-C5AB28CAF906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A561B494-BDB4-42A9-BD0A-C5AB28CAF906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A561B494-BDB4-42A9-BD0A-C5AB28CAF906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A561B494-BDB4-42A9-BD0A-C5AB28CAF906}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FB747E9-45C3-4C9D-B1CF-CA781280A72C}
+	EndGlobalSection
+EndGlobal

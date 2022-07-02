@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SKP.Net.Web.Areas.Admin.Models.Customers.CustomerModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div id="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedOnUtc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedOnUtc)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @item.CreatedOnUtc.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @item.UpdatedOnUtc.Value.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { rowkey = item.RowKey }) |
+                        @Html.ActionLink("Delete", "Delete", new { rowkey = item.RowKey })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
